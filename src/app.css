@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+@theme {
+    /* Eco-Fiesta Palette defined as CSS variables for easier Shadcn intgration if needed, 
+       but direct Tailwind 4 tokens here for immediate usage */
+
+    --color-background: #FAFAF7;
+    /* Bone White */
+    --color-foreground: #1A1A1A;
+    /* Charcoal Deep */
+
+    /* Action / Primary (Salsa Red) */
+    --color-primary: #D9381E;
+    --color-primary-foreground: #FFFFFF;
+
+    /* Accent (Agave Green) */
+    --color-accent: #2E5948;
+    --color-accent-foreground: #FFFFFF;
+
+    /* Support (Kraft Beige) */
+    --color-secondary: #EFE8D8;
+    --color-secondary-foreground: #1A1A1A;
+
+    --color-muted: #EFE8D8;
+    /* Reusing Beige for muted areas */
+    --color-muted-foreground: #4a4a4a;
+
+    --color-card: #FAFAF7;
+    /* Same as bg to match "no pure white" rule, or slightly different if needed. */
+    --color-card-foreground: #1A1A1A;
+
+    --color-border: #2E5948;
+    /* Accent green for borders/lines? Or maybe lighter. */
+
+    /* Typography */
+    --font-heading: 'Playfair Display', serif;
+    --font-sans: 'DM Sans', sans-serif;
+
+    /* Radius */
+    --radius-lg: 8px;
+    /* For cards */
+    --radius-full: 9999px;
+    /* For buttons */
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-background text-foreground antialiased font-sans selection:bg-primary/30 selection:text-primary;
+        background-color: var(--color-background);
+        /* Explicit fallback */
+    }
+
+    /* Noise Texture */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 9999;
+        opacity: 0.02;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='1'/%3E%3C/svg%3E");
+    }
+
+    /* Typography Rules */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading tracking-tight;
+        letter-spacing: -1px;
+    }
+
+    h1 {
+        @apply font-bold;
+    }
+
+    h2,
+    h3 {
+        @apply font-normal;
+        /* Or italic as requested */
+    }
+
+    p {
+        @apply leading-relaxed;
+        line-height: 1.8;
+    }
+}
+
+@layer utilities {
+
+    /* Soft Shadows */
+    .shadow-soft {
+        box-shadow: 0 10px 30px -10px rgba(46, 89, 72, 0.2);
+    }
+
+    .shadow-hover {
+        box-shadow: 0 20px 40px -10px rgba(46, 89, 72, 0.3);
+    }
+
+    /* Organic Lines */
+    .border-organic {
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        border-image: repeating-linear-gradient(to right, var(--color-accent) 0, var(--color-accent) 1px, transparent 1px, transparent 4px) 1;
+    }
+
+    @keyframes vibrate {
+        0% {
+            transform: translate(0);
+        }
+
+        20% {
+            transform: translate(-2px, 2px);
+        }
+
+        40% {
+            transform: translate(-2px, -2px);
+        }
+
+        60% {
+            transform: translate(2px, 2px);
+        }
+
+        80% {
+            transform: translate(2px, -2px);
+        }
+
+        100% {
+            transform: translate(0);
+        }
+    }
+
+    .animate-vibrate {
+        animation: vibrate 0.3s linear infinite;
+    }
+}

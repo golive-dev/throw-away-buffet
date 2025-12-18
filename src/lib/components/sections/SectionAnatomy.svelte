@@ -1,94 +1,109 @@
-<script>
+<script lang="ts">
     import { cn } from "$lib/utils";
+    import { Droplets, Layers, UtensilsCrossed } from "lucide-svelte"; // Fallback icons
 
-    // Labels positioning based on the visual layout of the tray
-    // Dip Zone (Center Ovals)
-    // Topping Deck (Side Rectangles)
-    // No-Fall Slot (Bottom slots)
+    // Feature Data
+    const features = [
+        {
+            id: 1,
+            title: 'The "No-Fall" Slots',
+            description:
+                "Deep grooves designed to hold 3 hard shells or buns upright. Say goodbye to toppings falling on the plate.",
+            icon: UtensilsCrossed, // Placeholder
+            target: { top: 65, left: 50 }, // Coordinates 0-100
+            connectorStart: { y: 22 }, // Relative position on the right list 0-100
+        },
+        {
+            id: 2,
+            title: "The Liquid Zone",
+            description:
+                "Curved oval shapes perfect for scooping dips like guacamole or salsa without getting stuck in corners.",
+            icon: Droplets,
+            target: { top: 45, left: 50 },
+            connectorStart: { y: 50 },
+        },
+        {
+            id: 3,
+            title: "The Topping Decks",
+            description:
+                "High walls keep your dry ingredients (lettuce, cheese, chips) contained and separated from the wet dips.",
+            icon: Layers,
+            target: { top: 25, left: 20 },
+            connectorStart: { y: 78 },
+        },
+    ];
 </script>
 
-<section class="py-20 md:py-28 bg-white overflow-hidden">
-    <div class="container mx-auto px-4">
-        <div class="text-center mb-12">
-            <h2
-                class="text-3xl md:text-5xl font-heading font-bold text-foreground mb-4"
-            >
-                The Anatomy of the Perfect Bite.
-            </h2>
-            <p class="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Every curve has a purpose. Designed for maximum holding capacity
-                and zero mess.
-            </p>
+<section class="bg-[#F5F5F0] overflow-hidden py-12 lg:py-0">
+    <!-- MOBILE HEADER (Visible only on mobile) -->
+    <div class="container mx-auto px-8 mb-8 lg:hidden text-left space-y-4">
+        <h2 class="text-4xl font-heading font-bold text-foreground">
+            Engineered for Order.
+        </h2>
+        <p class="text-xl text-muted-foreground font-medium">
+            Smart compartments that keep flavors distinct and tables clean.
+        </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row min-h-[auto] lg:min-h-screen">
+        <!-- LEFT SIDE: Image (Desktop 50%) -->
+        <div
+            class="relative w-full lg:w-1/2 bg-white flex items-center justify-center p-8 lg:order-1"
+        >
+            <div class="relative w-full max-w-lg aspect-square">
+                <!-- Main Image -->
+                <img
+                    src="/gallery-taco-night.jpg"
+                    alt="Tray filled with tacos and sides"
+                    class="w-full h-full object-contain drop-shadow-2xl"
+                />
+            </div>
         </div>
 
-        <div class="relative max-w-4xl mx-auto">
-            <!-- Background Image (Empty Tray) -->
-            <div class="relative aspect-square md:aspect-4/3 w-full">
-                <!-- Using the white tray image -->
-                <img
-                    src="/hero-tray.jpg"
-                    alt="Empty Tray Anatomy"
-                    class="w-full h-full object-contain opacity-40 mix-blend-multiply grayscale-[0.2]"
-                />
-
-                <!-- Overlays / Annotations -->
-
-                <!-- The Dip Zone (Center) -->
-                <div
-                    class="absolute top-[35%] left-1/2 -translate-x-1/2 text-center group"
+        <!-- RIGHT SIDE: Content (Desktop 50%) -->
+        <div
+            class="w-full lg:w-1/2 p-8 md:p-16 flex flex-col justify-center bg-[#F5F5F0] space-y-12 lg:order-2"
+        >
+            <!-- DESKTOP HEADER (Hidden on mobile) -->
+            <div class="hidden lg:block text-left space-y-4">
+                <h2
+                    class="text-4xl md:text-5xl font-heading font-bold text-foreground"
                 >
-                    <div
-                        class="w-32 h-24 border-2 border-dashed border-primary rounded-[50%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity"
-                    ></div>
-                    <span
-                        class="inline-block px-4 py-2 bg-white shadow-lg rounded-full text-sm font-bold border border-gray-100 relative z-10"
-                    >
-                        The Dip Zone
-                    </span>
-                    <div class="w-px h-12 bg-gray-400 mx-auto my-2"></div>
-                    <p
-                        class="text-xs md:text-sm font-medium max-w-37.5 mx-auto text-gray-600 bg-white/80 p-2 rounded backdrop-blur leading-tight"
-                    >
-                        Oval shape designed for the perfect scoop. Ideal for
-                        Guac, Salsa, or Queso.
-                    </p>
-                </div>
+                    Engineered for Order.
+                </h2>
+                <p class="text-xl text-muted-foreground font-medium">
+                    Smart compartments that keep flavors distinct and tables
+                    clean.
+                </p>
+            </div>
 
-                <!-- The Topping Deck (Right Side - approximates) -->
-                <div class="absolute top-[20%] right-[15%] text-left group">
-                    <span
-                        class="text-red-600 inline-block px-4 py-2 bg-white shadow-lg rounded-full text-sm font-bold border border-gray-100"
-                    >
-                        The Topping Deck
-                    </span>
-                    <div
-                        class="w-12 h-px bg-gray-400 -ml-12 -mt-3.75 rotate-45 origin-right"
-                    ></div>
-                    <p
-                        class="text-xs md:text-sm font-medium max-w-40 mt-4 text-gray-600 bg-white/80 p-2 rounded backdrop-blur leading-tight"
-                    >
-                        Deep walls keep your cheese, lettuce, and pico de gallo
-                        separated and clean.
-                    </p>
-                </div>
+            <!-- Visual List -->
+            <div class="space-y-10 relative">
+                {#each features as feature}
+                    <div class="flex gap-6 group relative">
+                        <!-- Icon -->
+                        <div class="shrink-0 relative">
+                            <div
+                                class="w-12 h-12 bg-white rounded-xl shadow-sm flex items-center justify-center border border-stone-200"
+                            >
+                                <svelte:component
+                                    this={feature.icon}
+                                    class="w-6 h-6 text-red-600"
+                                />
+                            </div>
+                        </div>
 
-                <!-- The No-Fall Slot (Bottom Center) -->
-                <div
-                    class="absolute bottom-[20%] left-1/2 -translate-x-1/2 text-center group"
-                >
-                    <p
-                        class="text-xs md:text-sm font-medium max-w-50 mx-auto text-gray-600 bg-white/80 p-2 rounded backdrop-blur mb-2 leading-tight"
-                    >
-                        Engineered grooves to hold 3 hard shells, buns, or cones
-                        upright.
-                    </p>
-                    <div class="w-px h-12 bg-gray-400 mx-auto mb-2"></div>
-                    <span
-                        class="text-red-600 inline-block px-4 py-2 bg-white shadow-lg rounded-full text-sm font-bold border border-gray-100"
-                    >
-                        The No-Fall Slot
-                    </span>
-                </div>
+                        <!-- Text -->
+                        <div class="space-y-2">
+                            <h3 class="text-xl font-bold text-foreground">
+                                {feature.title}
+                            </h3>
+                            <p class="text-muted-foreground leading-relaxed">
+                                {feature.description}
+                            </p>
+                        </div>
+                    </div>
+                {/each}
             </div>
         </div>
     </div>

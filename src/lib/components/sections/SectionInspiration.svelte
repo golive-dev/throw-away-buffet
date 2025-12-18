@@ -18,7 +18,7 @@
         },
         hotdog: {
             title: "The Hot Dog Station",
-            image: "/recipe-hotdog-new.jpg",
+            image: "/recipe-hotdog-updated.jpg",
             hotspots: [
                 { top: "75%", left: "50%", text: "Fits buns perfectly" },
                 { top: "30%", left: "50%", text: "Condiment central" },
@@ -28,10 +28,10 @@
         },
         icecream: {
             title: "The Ice Cream Sunday",
-            image: "/recipe-icecream-new.jpg", // New real photo
+            image: "/recipe-icecream-updated.jpg", // NEW Updated real photo
             hotspots: [
                 { top: "70%", left: "50%", text: "Cones don't roll!" },
-                { top: "25%", left: "80%", text: "Toppings galore" },
+                { top: "45%", left: "65%", text: "Toppings galore" },
             ],
             description:
                 "Holds your cones while you grab the toppings. Chocolate, caramel, and strawberry in the dips. Nuts and sprinkles on deck. Zero sticky hands.",
@@ -161,7 +161,6 @@
                         >
                             {scenarios[activeTab].description}
                         </p>
-
                     </div>
                 </div>
             {/key}

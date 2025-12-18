@@ -97,7 +97,7 @@
                 class="text-lg md:text-xl font-sans text-muted-foreground leading-relaxed"
             >
                 Stop juggling ceramic bowls and mismatched plates. One tray,
-                three compartments, zero stress.
+                twelve compartments, zero stress.
             </p>
         </div>
     </div>

@@ -8,6 +8,8 @@
 
 	let { children } = $props();
 	let isCheckout = $derived($page.url.pathname === "/checkout");
+	let isV2 = $derived($page.url.pathname.startsWith("/v2"));
+	let hideChrome = $derived(isCheckout || isV2);
 </script>
 
 <svelte:head>
@@ -45,14 +47,14 @@
 <div
 	class="flex min-h-screen flex-col bg-background text-foreground font-sans"
 >
-	{#if !isCheckout}
+	{#if !hideChrome}
 		<Header />
 		<CartSidebar />
 	{/if}
 	<main class="flex-1">
 		{@render children()}
 	</main>
-	{#if !isCheckout}
+	{#if !hideChrome}
 		<Footer />
 	{/if}
 </div>

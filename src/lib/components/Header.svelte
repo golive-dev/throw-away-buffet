@@ -1,10 +1,8 @@
 <script lang="ts">
     import { Button } from "$lib/components/ui/button";
-    import { ShoppingCart, Menu, X } from "lucide-svelte";
+    import { Menu, X } from "lucide-svelte";
     import { cn } from "$lib/utils";
     import { fly, fade } from "svelte/transition";
-
-    import { toggleCart, cartCount } from "$lib/stores/cart";
 
     let scrollY = $state(0);
     let isScrolled = $derived(scrollY > 50);
@@ -65,7 +63,7 @@
                 if (mobileMenuOpen) toggleMobileMenu();
             }}
         >
-            Throw Away Buffet
+            Throwaway Buffet
         </a>
 
         <!-- Navigation (Desktop) -->
@@ -96,33 +94,14 @@
             </button>
         </nav>
 
-        <!-- Right Side: Cart & CTA & Mobile Trigger -->
+        <!-- Right Side: Cart & Mobile Trigger -->
         <div class="flex items-center gap-4 relative z-50">
-            <!-- Cart (Inactive for now but visible) -->
-            <button
-                class="relative p-2 opacity-50 cursor-not-allowed hidden md:block"
-                aria-label="Cart Coming Soon"
-            >
-                <ShoppingCart
-                    class="w-6 h-6 transition-colors duration-300 text-foreground"
-                />
-            </button>
-
-            <!-- Desktop CTA -->
-            <div class="hidden md:block">
-                <Button
-                    size="sm"
-                    class="bg-primary hover:bg-[#b0220a] text-white rounded-full px-6 font-bold shadow-md hover:shadow-lg transition-all"
-                    onclick={() => scrollToSection("waitlist")}
-                >
-                    Join Waitlist
-                </Button>
-            </div>
-
             <!-- Mobile Menu Trigger -->
             <button
                 class="md:hidden p-2 relative z-50"
                 onclick={toggleMobileMenu}
+                aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={mobileMenuOpen}
             >
                 {#if mobileMenuOpen}
                     <X class="w-6 h-6 text-white" />
@@ -140,7 +119,7 @@
     <div
         class="fixed inset-0 z-30"
         onclick={closeMobileMenu}
-        onkeydown={(e) => e.key === 'Enter' && closeMobileMenu()}
+        onkeydown={(e) => e.key === "Enter" && closeMobileMenu()}
         role="button"
         tabindex="-1"
         aria-label="Close menu"
@@ -178,14 +157,6 @@
             </button>
         </nav>
 
-        <div class="mt-16 w-full max-w-xs">
-            <Button
-                size="lg"
-                class="w-full bg-white text-[#D9381E] hover:bg-zinc-100 rounded-full h-14 text-lg font-bold shadow-xl"
-                onclick={() => scrollToSection("waitlist")}
-            >
-                JOIN THE VIP LIST
-            </Button>
-        </div>
+        <div class="mt-16 w-full max-w-xs"></div>
     </div>
 {/if}

@@ -31,7 +31,11 @@
     <img
         {src}
         {alt}
-        class="{className} {loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-500"
+        loading="lazy"
+        decoding="async"
+        class="{className} {loaded
+            ? 'opacity-100'
+            : 'opacity-0'} transition-opacity duration-500"
         onload={handleLoad}
         onerror={handleError}
     />

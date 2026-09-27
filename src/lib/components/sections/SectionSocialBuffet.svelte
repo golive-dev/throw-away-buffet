@@ -76,12 +76,12 @@
     const col2 = photos.filter((p) => p.col === 1);
     const col3 = photos.filter((p) => p.col === 2);
 
-    let scrollY = 0;
-    let parallaxOffset = 0;
+    let scrollY = $state(0);
+    let parallaxOffset = $state(0);
     let sectionRef: HTMLElement;
 
     // Lightbox State
-    let selectedPhoto: (typeof photos)[0] | null = null;
+    let selectedPhoto: (typeof photos)[0] | null = $state(null);
 
     function openLightbox(photo: (typeof photos)[0]) {
         selectedPhoto = photo;
@@ -138,10 +138,15 @@
                     <button
                         class="group relative block w-full rounded-lg overflow-hidden cursor-pointer"
                         onclick={() => openLightbox(photo)}
+                        aria-label="View photo: {photo.label}"
                     >
                         <img
                             src={photo.src}
                             alt={photo.alt}
+                            loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="400"
                             class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
 
@@ -175,10 +180,15 @@
                     <button
                         class="group relative block w-full rounded-lg overflow-hidden cursor-pointer"
                         onclick={() => openLightbox(photo)}
+                        aria-label="View photo: {photo.label}"
                     >
                         <img
                             src={photo.src}
                             alt={photo.alt}
+                            loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="400"
                             class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
 
@@ -207,10 +217,15 @@
                     <button
                         class="group relative block w-full rounded-lg overflow-hidden cursor-pointer"
                         onclick={() => openLightbox(photo)}
+                        aria-label="View photo: {photo.label}"
                     >
                         <img
                             src={photo.src}
                             alt={photo.alt}
+                            loading="lazy"
+                            decoding="async"
+                            width="400"
+                            height="400"
                             class="w-full h-auto object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                         />
 
@@ -242,10 +257,15 @@
                 <button
                     class="shrink-0 w-[85vw] snap-center relative rounded-lg overflow-hidden scroll-ml-4"
                     onclick={() => openLightbox(photo)}
+                    aria-label="View photo: {photo.label}"
                 >
                     <img
                         src={photo.src}
                         alt={photo.alt}
+                        loading="lazy"
+                        decoding="async"
+                        width="400"
+                        height="400"
                         class="w-full h-[400px] object-cover"
                     />
                     <div
@@ -260,10 +280,10 @@
         <!-- Final CTA -->
         <div class="text-center mt-20 space-y-6">
             <h3 class="text-2xl md:text-3xl font-serif text-zinc-900">
-                Host a party. Tag @ThrowawayBuffet. Get featured.
+                Host a party. Tag @TheThrowawayBuffet. Get featured.
             </h3>
             <a
-                href="https://instagram.com"
+                href="https://instagram.com/thethrowawaybuffet"
                 target="_blank"
                 class="inline-block text-zinc-500 hover:text-[#D9381E] font-medium border-b border-zinc-300 hover:border-[#D9381E] transition-colors pb-0.5"
             >
@@ -279,11 +299,16 @@
         class="fixed inset-0 z-[60] bg-zinc-900/95 backdrop-blur-md flex items-center justify-center p-4"
         transition:fade={{ duration: 200 }}
         onclick={closeLightbox}
+        onkeydown={(e) => e.key === "Escape" && closeLightbox()}
         role="dialog"
         aria-modal="true"
+        aria-label={selectedPhoto.label}
+        tabindex="-1"
     >
         <button
             class="absolute top-6 right-6 text-white text-opacity-50 hover:text-opacity-100 transition-opacity p-2"
+            aria-label="Close lightbox"
+            onclick={closeLightbox}
         >
             <svg
                 class="w-8 h-8"
@@ -309,6 +334,10 @@
                 <img
                     src={selectedPhoto.src}
                     alt={selectedPhoto.alt}
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
                     class="w-full h-full object-contain md:object-cover"
                 />
             </div>
@@ -330,18 +359,6 @@
                         event. Recreate the look with our bundled trays.
                     </p>
                 </div>
-
-                <Button
-                    class="w-full bg-zinc-900 hover:bg-zinc-800 text-white rounded-full h-12"
-                    onclick={() => {
-                        closeLightbox();
-                        document
-                            .getElementById("waitlist")
-                            ?.scrollIntoView({ behavior: "smooth" });
-                    }}
-                >
-                    Shop this look
-                </Button>
             </div>
         </div>
     </div>

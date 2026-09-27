@@ -63,9 +63,9 @@
             <h2
                 class="text-4xl md:text-5xl font-heading font-bold text-foreground"
             >
-                Engineered for Tacos.<br />
+                One Tray. Endless Menus.<br />
                 <span class="italic font-serif text-muted-foreground"
-                    >Perfect for Everything.</span
+                    >Pick your vibe.</span
                 >
             </h2>
         </div>
@@ -123,6 +123,10 @@
                         <img
                             src={scenarios[activeTab].image}
                             alt={scenarios[activeTab].title}
+                            loading="lazy"
+                            decoding="async"
+                            width="800"
+                            height="600"
                             class="w-full h-full object-contain md:object-cover bg-[#F5F5F0]"
                         />
 

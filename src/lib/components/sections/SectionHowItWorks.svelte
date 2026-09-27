@@ -9,7 +9,7 @@
         <h2
             class="text-4xl md:text-5xl font-heading font-bold text-foreground mb-20"
         >
-            The 3-Step Party Trick.
+            Setup in Seconds. Clean Up in None.
         </h2>
 
         <div class="grid md:grid-cols-3 gap-12 relative">
@@ -44,10 +44,10 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold font-heading mb-3">
-                        Pop it Open.
+                        Instant Station.
                     </h3>
                     <p class="text-muted-foreground leading-relaxed">
-                        It comes folded to fit in any drawer. It unfolds in a second to fill your table.
+                        Unfolds from a drawer to a full buffet in literally one second. No assembly required.
                     </p>
                 </div>
             </div>
@@ -89,10 +89,10 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold font-heading mb-3">
-                        Load it Up.
+                        Everyone's Happy.
                     </h3>
                     <p class="text-muted-foreground leading-relaxed">
-                        Three deep zones. Perfect for tacos, ice cream bars, or movie night. Nothing mixes.
+                        12 compartments mean no flavor collisions. Picky eaters, dietary restrictions, maximalists—all handled.
                     </p>
                 </div>
             </div>
@@ -141,10 +141,10 @@
                 </div>
                 <div>
                     <h3 class="text-2xl font-bold font-heading mb-3">
-                        Vanish the Mess.
+                        Freedom.
                     </h3>
                     <p class="text-muted-foreground leading-relaxed">
-                        100% Biodegradable. Compost it or throw it in the trash. Cleanup will take you exactly 0 minutes.
+                        When it's over, toss it. 100% compostable. You're back on the couch before your guests reach their cars.
                     </p>
                 </div>
             </div>

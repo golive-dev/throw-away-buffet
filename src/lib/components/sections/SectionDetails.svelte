@@ -4,6 +4,20 @@
 
 <section class="py-20 md:py-28 bg-[#FAFAF7] overflow-hidden">
     <div class="container mx-auto px-6">
+        <!-- Section Header -->
+        <div class="text-center mb-16 space-y-4">
+            <span
+                class="inline-block text-sm font-bold tracking-[2px] text-primary uppercase"
+            >
+                The Specs
+            </span>
+            <h2
+                class="text-4xl md:text-5xl font-heading font-bold text-foreground"
+            >
+                Obsessively Designed.
+            </h2>
+        </div>
+
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             <!-- Specs / Text -->
             <div class="space-y-12 order-2 lg:order-1">
@@ -110,6 +124,10 @@
                 <img
                     src="/hero-tray.jpg"
                     alt="Close up of fiber texture"
+                    loading="lazy"
+                    decoding="async"
+                    width="800"
+                    height="600"
                     class="w-full h-full object-cover scale-150 origin-bottom-left hover:scale-[1.6] transition-transform duration-1000"
                 />
                 <div

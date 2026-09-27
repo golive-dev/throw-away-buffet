@@ -38,10 +38,10 @@
     <!-- MOBILE HEADER (Visible only on mobile) -->
     <div class="container mx-auto px-8 mb-8 lg:hidden text-left space-y-4">
         <h2 class="text-4xl font-heading font-bold text-foreground">
-            Engineered for Order.
+            Built Different.
         </h2>
         <p class="text-xl text-muted-foreground font-medium">
-            Smart compartments that keep flavors distinct and tables clean.
+            Every curve and compartment exists for a reason.
         </p>
     </div>
 
@@ -55,6 +55,10 @@
                 <img
                     src="/gallery-taco-night.jpg"
                     alt="Tray filled with tacos and sides"
+                    loading="lazy"
+                    decoding="async"
+                    width="600"
+                    height="600"
                     class="w-full h-full object-contain drop-shadow-2xl"
                 />
             </div>
@@ -69,11 +73,10 @@
                 <h2
                     class="text-4xl md:text-5xl font-heading font-bold text-foreground"
                 >
-                    Engineered for Order.
+                    Built Different.
                 </h2>
                 <p class="text-xl text-muted-foreground font-medium">
-                    Smart compartments that keep flavors distinct and tables
-                    clean.
+                    Every curve and compartment exists for a reason.
                 </p>
             </div>
 

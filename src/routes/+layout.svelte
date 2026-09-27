@@ -13,40 +13,65 @@
 </script>
 
 <svelte:head>
-	<title>Throw Away Buffet | The Ultimate Biodegradable Party Tray</title>
-	<meta name="description" content="Meet the world's first tri-folded, biodegradable buffet station. Setup in seconds, toss without guilt. Perfect for tacos, hot dogs, ice cream bars & more." />
-	<meta name="keywords" content="biodegradable tray, party tray, taco bar, buffet station, eco-friendly, sustainable party supplies" />
-	
+	<title>Throwaway Buffet | All the Fiesta. None of the Mess.</title>
+	<meta
+		name="description"
+		content="The world's first tri-folded, biodegradable buffet station. Set up in seconds, toss without guilt. Perfect for tacos, hot dogs, ice cream bars & more. Zero cleanup required."
+	/>
+	<meta
+		name="keywords"
+		content="biodegradable tray, party tray, taco bar, buffet station, eco-friendly, sustainable party supplies, disposable buffet"
+	/>
+	<link rel="canonical" href="https://throwawaybuffet.com" />
+
 	<!-- Open Graph / Social -->
 	<meta property="og:type" content="website" />
-	<meta property="og:title" content="Throw Away Buffet | All the Fiesta. None of the Mess." />
-	<meta property="og:description" content="The world's first tri-folded, biodegradable buffet station. Setup in seconds, toss without guilt. Your sink will thank you." />
-	<meta property="og:image" content="/og-image.jpg" />
+	<meta property="og:site_name" content="Throwaway Buffet" />
+	<meta
+		property="og:title"
+		content="Throwaway Buffet | All the Fiesta. None of the Mess."
+	/>
+	<meta
+		property="og:description"
+		content="The world's first tri-folded, biodegradable buffet station. Set up in seconds, toss without guilt. Your sink will thank you."
+	/>
+	<meta
+		property="og:image"
+		content="https://throwawaybuffet.com/hero-tray.jpg"
+	/>
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta
+		property="og:image:alt"
+		content="Throwaway Buffet tray filled with taco toppings and sides"
+	/>
 	<meta property="og:url" content="https://throwawaybuffet.com" />
-	
+
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:title" content="Throw Away Buffet | All the Fiesta. None of the Mess." />
-	<meta name="twitter:description" content="The world's first tri-folded, biodegradable buffet station. Setup in seconds, toss without guilt." />
-	<meta name="twitter:image" content="/og-image.jpg" />
-	
-	<!-- Fonts -->
-	<link rel="preconnect" href="https://fonts.googleapis.com" />
-	<link
-		rel="preconnect"
-		href="https://fonts.gstatic.com"
-		crossorigin="anonymous"
+	<meta name="twitter:site" content="@ThrowawayBuffet" />
+	<meta
+		name="twitter:title"
+		content="Throwaway Buffet | All the Fiesta. None of the Mess."
 	/>
-	<link
-		href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
-		rel="stylesheet"
+	<meta
+		name="twitter:description"
+		content="The world's first tri-folded, biodegradable buffet station. Set up in seconds, toss without guilt."
 	/>
+	<meta
+		name="twitter:image"
+		content="https://throwawaybuffet.com/hero-tray.jpg"
+	/>
+	<meta
+		name="twitter:image:alt"
+		content="Throwaway Buffet tray filled with taco toppings and sides"
+	/>
+
+	<!-- Canonical -->
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<div
-	class="flex min-h-screen flex-col bg-background text-foreground font-sans"
->
+<div class="flex min-h-screen flex-col bg-background text-foreground font-sans">
 	{#if !hideChrome}
 		<Header />
 		<CartSidebar />

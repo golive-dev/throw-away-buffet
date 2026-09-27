@@ -31,10 +31,10 @@
             <h2
                 class="text-3xl md:text-5xl font-heading font-bold mb-4 text-foreground"
             >
-                Ready for Any RSVP.
+                From Kickoff to Credits.
             </h2>
             <p class="text-lg text-muted-foreground">
-                Be a guest at your own party.
+                Your buffet adapts to any occasion.
             </p>
         </div>
 
@@ -47,6 +47,10 @@
                         <img
                             src={card.image}
                             alt={card.title}
+                            loading="lazy"
+                            decoding="async"
+                            width="600"
+                            height="256"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                         />
                         <div

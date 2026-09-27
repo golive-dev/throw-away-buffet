@@ -72,10 +72,10 @@
             <span
                 class="inline-block text-sm font-bold tracking-[2px] text-primary uppercase"
             >
-                Versatility
+                Steal These Ideas
             </span>
             <h2 class="text-4xl md:text-5xl font-heading font-bold">
-                More Than Just Tacos.
+                Ready-to-Copy Setups.
             </h2>
             <p class="text-lg text-zinc-600">
                 Discover endless combinations. One tray, a world of flavors.
@@ -88,6 +88,7 @@
                 <button
                     class="group relative block w-full aspect-3/4 overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 text-left"
                     onclick={() => openRecipe(recipe)}
+                    aria-label="View recipe: {recipe.title}"
                 >
                     <!-- Image -->
                     <div class="absolute inset-0 bg-zinc-900">
@@ -95,6 +96,10 @@
                             <img
                                 src="/{recipe.image}"
                                 alt={recipe.title}
+                                loading="lazy"
+                                decoding="async"
+                                width="400"
+                                height="533"
                                 class="w-full h-full object-cover opacity-90 group-hover:opacity-60 group-hover:scale-110 transition-all duration-700 ease-out"
                             />
                         {:else}
@@ -169,7 +174,7 @@
             class="absolute inset-0 bg-black/60 backdrop-blur-[5px]"
             transition:fade={{ duration: 300 }}
             onclick={closeRecipe}
-            onkeydown={(e) => e.key === 'Escape' && closeRecipe()}
+            onkeydown={(e) => e.key === "Escape" && closeRecipe()}
             role="button"
             tabindex="-1"
             aria-label="Close modal"
@@ -185,7 +190,7 @@
                 easing: quintOut,
             }}
             onclick={(e) => e.stopPropagation()}
-            onkeydown={(e) => e.key === 'Escape' && closeRecipe()}
+            onkeydown={(e) => e.key === "Escape" && closeRecipe()}
             role="dialog"
             tabindex="-1"
         >
@@ -217,6 +222,10 @@
                     <img
                         src="/{selectedRecipe.image}"
                         alt={selectedRecipe.title}
+                        loading="lazy"
+                        decoding="async"
+                        width="800"
+                        height="320"
                         class="w-full h-full object-cover"
                     />
                     <!-- Gradient Overlay -->
@@ -318,12 +327,7 @@
             >
                 <Button
                     class="w-full bg-primary hover:bg-[#b0220a] text-white font-bold h-12 md:h-14 text-base md:text-lg rounded-full shadow-xl shadow-red-500/20 active:scale-[0.98] transition-all"
-                    onclick={() => {
-                        closeRecipe();
-                        document
-                            .getElementById("waitlist")
-                            ?.scrollIntoView({ behavior: "smooth" });
-                    }}
+                    onclick={() => closeRecipe()}
                 >
                     Get the Trays for this Recipe
                 </Button>

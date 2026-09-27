@@ -1,136 +1,155 @@
 <script lang="ts">
-    import { cn } from "$lib/utils";
-
     let guests = $state(20);
     let minutesSaved = $derived(guests * 3);
 
     let funText = $derived.by(() => {
         if (minutesSaved < 30) {
-            return "That’s enough time to mix a pitcher of Margaritas. 🍹";
+            return "Enough time to actually eat at your own party.";
         } else if (minutesSaved <= 60) {
-            return "That’s enough time to watch an extra episode of your favorite show. 📺";
+            return "That's a whole episode of your favorite show.";
+        } else if (minutesSaved <= 90) {
+            return "Time to actually hang out with your guests.";
         } else {
-            return "That’s enough time to actually enjoy your own party for once. 💃";
+            return "You could watch a movie instead of scrubbing.";
         }
     });
+
+    // Preset options for quick selection
+    const presets = [
+        { label: "Small", guests: 10, icon: "👨‍👩‍👧" },
+        { label: "Medium", guests: 25, icon: "🎉" },
+        { label: "Large", guests: 40, icon: "🏟️" },
+    ];
 </script>
 
-<section class="py-20 md:py-28 bg-[#EFE8D8] text-center">
+<section
+    class="py-24 md:py-32 bg-gradient-to-b from-[#1a1a1a] to-[#2d2d2d] text-white overflow-hidden"
+>
     <div class="container mx-auto px-4">
         <!-- Header -->
-        <h2
-            class="text-4xl md:text-5xl font-heading font-bold text-[#333333] mb-4"
-        >
-            Do the Party Math.
-        </h2>
-        <p
-            class="text-lg md:text-xl text-[#555555] max-w-2xl mx-auto mb-12 font-sans"
-        >
-            Washing dishes takes time. Throwing them away takes seconds. See how
-            much life you get back.
-        </p>
+        <div class="text-center mb-16">
+            <p
+                class="text-primary font-bold uppercase tracking-widest text-sm mb-4"
+            >
+                Time Calculator
+            </p>
+            <h2 class="text-4xl md:text-6xl font-heading font-bold mb-4">
+                Reclaim Your Night
+            </h2>
+            <p class="text-lg md:text-xl text-white/60 max-w-xl mx-auto">
+                See how much time you'll save when cleanup takes zero minutes.
+            </p>
+        </div>
 
-        <!-- Widget Card -->
-        <div
-            class="max-w-2xl mx-auto bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-stone-200/50"
-        >
-            <!-- Slider Input -->
-            <div class="mb-10">
-                <label
-                    for="guests-slider"
-                    class="block text-lg font-bold text-[#333333] mb-6"
-                >
-                    How big is your crowd?
-                </label>
-
-                <div class="relative pt-6 pb-2">
-                    <!-- Value Label following thumb implementation could be complex CSS, 
-                         simplifying to a centered dynamic label or static position for now 
-                         to ensure robustness/speed, as custom thumb tooltips are tricky without extra libs.
-                         Let's just show the value clearly above or incorporated. 
-                         The prompt asked for "Marker Visual: Above the button... dynamic number".
-                         We'll use a standard range input and a visual label for simplicity and reliability. -->
-
-                    <div
-                        class="relative w-full h-2 bg-gray-200 rounded-full mb-4"
-                    >
+        <div class="max-w-4xl mx-auto">
+            <!-- Main Display Card -->
+            <div
+                class="bg-white/5 backdrop-blur-sm rounded-3xl p-8 md:p-12 border border-white/10"
+            >
+                <!-- Big Number Display -->
+                <div class="text-center mb-12">
+                    <div class="inline-block relative">
                         <div
-                            class="absolute top-0 left-0 h-full bg-primary rounded-full"
+                            class="text-[120px] md:text-[180px] font-heading font-black leading-none text-white tracking-tight"
+                        >
+                            {minutesSaved}
+                        </div>
+                        <div
+                            class="absolute -right-8 md:-right-12 top-4 md:top-8"
+                        >
+                            <div
+                                class="bg-primary text-white text-xs md:text-sm font-bold px-3 py-1.5 rounded-full uppercase tracking-wide"
+                            >
+                                min
+                            </div>
+                        </div>
+                    </div>
+                    <p
+                        class="text-xl md:text-2xl text-white/40 font-medium -mt-4"
+                    >
+                        of scrubbing, gone
+                    </p>
+                </div>
+
+                <!-- Preset Buttons -->
+                <div class="flex justify-center gap-3 md:gap-4 mb-10">
+                    {#each presets as preset}
+                        <button
+                            onclick={() => (guests = preset.guests)}
+                            class="group relative px-6 py-4 rounded-2xl transition-all duration-300 {guests ===
+                            preset.guests
+                                ? 'bg-primary text-white scale-105'
+                                : 'bg-white/10 text-white/70 hover:bg-white/20 hover:text-white'}"
+                        >
+                            <div class="text-2xl mb-1">{preset.icon}</div>
+                            <div class="text-sm font-bold">{preset.label}</div>
+                            <div class="text-xs opacity-60">
+                                {preset.guests} guests
+                            </div>
+                        </button>
+                    {/each}
+                </div>
+
+                <!-- Custom Slider -->
+                <div class="max-w-lg mx-auto mb-10">
+                    <div class="flex justify-between items-center mb-3">
+                        <span class="text-white/40 text-sm font-medium"
+                            >Or choose exactly</span
+                        >
+                        <span class="text-white font-bold text-lg"
+                            >{guests} guests</span
+                        >
+                    </div>
+
+                    <div class="relative h-12 flex items-center">
+                        <!-- Track Background -->
+                        <div
+                            class="absolute inset-x-0 h-2 bg-white/10 rounded-full"
+                        ></div>
+
+                        <!-- Active Track -->
+                        <div
+                            class="absolute left-0 h-2 bg-gradient-to-r from-primary to-primary/70 rounded-full transition-all duration-150"
                             style="width: {((guests - 5) / (50 - 5)) * 100}%"
                         ></div>
+
+                        <!-- Native Range Input (invisible but functional) -->
                         <input
-                            id="guests-slider"
                             type="range"
                             min="5"
                             max="50"
                             bind:value={guests}
-                            class="absolute top-1/2 -translate-y-1/2 left-0 w-full h-6 opacity-0 cursor-pointer z-10"
+                            aria-label="Number of guests: {guests}"
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                         />
-                        <!-- Custom Thumb Visual (Visual only, aligned via calc) -->
+
+                        <!-- Custom Thumb -->
                         <div
-                            class="absolute top-1/2 -translate-y-1/2 w-8 h-8 bg-white border-2 border-primary rounded-full shadow-md pointer-events-none flex items-center justify-center -ml-4"
+                            class="absolute w-6 h-6 bg-white rounded-full shadow-lg shadow-black/30 pointer-events-none transition-all duration-150 -ml-3"
                             style="left: {((guests - 5) / (50 - 5)) * 100}%"
                         ></div>
-                        <!-- Floating Value Label -->
-                        <div
-                            class="absolute -top-10 -ml-8 w-16 text-center font-bold text-[#333333] pointer-events-none"
-                            style="left: {((guests - 5) / (50 - 5)) * 100}%"
-                        >
-                            {guests} Guests
-                        </div>
+                    </div>
+
+                    <div
+                        class="flex justify-between text-xs text-white/30 mt-2"
+                    >
+                        <span>5</span>
+                        <span>50</span>
                     </div>
                 </div>
-                <div
-                    class="flex justify-between text-xs font-bold text-gray-400 mt-2 px-1"
-                >
-                    <span>5 Guests</span>
-                    <span>50 Guests</span>
+
+                <!-- Fun Fact -->
+                <div class="text-center">
+                    <div
+                        class="inline-flex items-center gap-3 bg-white/5 rounded-full px-6 py-3 border border-white/10"
+                    >
+                        <span class="text-2xl">💡</span>
+                        <p class="text-white/70 font-medium">{funText}</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Result -->
-            <div class="space-y-6">
-                <div class="space-y-2">
-                    <p
-                        class="text-gray-500 font-medium uppercase tracking-widest text-sm"
-                    >
-                        Total Time Saved
-                    </p>
-                    <h3
-                        class="text-5xl md:text-7xl font-heading font-bold text-primary"
-                    >
-                        {minutesSaved} Minutes
-                    </h3>
-                    <p class="text-xl md:text-2xl text-[#333333] font-medium">
-                        of scrubbing
-                    </p>
-                </div>
-
-                <!-- Fun Factor -->
-                <div class="min-h-12 flex items-center justify-center">
-                    <p
-                        class="text-lg md:text-xl text-[#555555] font-medium animate-in fade-in slide-in-from-bottom-2 duration-300"
-                    >
-                        {funText}
-                    </p>
-                </div>
-
-                <!-- CTA -->
-                <div class="pt-4">
-                    <a
-                        href="#waitlist"
-                        onclick={(e) => {
-                            e.preventDefault();
-                            document
-                                .getElementById("waitlist")
-                                ?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        class="inline-block text-primary font-bold text-lg border-b-2 border-primary/30 hover:border-primary transition-all"
-                    >
-                        Save those minutes now →
-                    </a>
-                </div>
-            </div>
+            <!-- CTA Below -->
         </div>
     </div>
 </section>

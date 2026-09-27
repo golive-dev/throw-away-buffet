@@ -124,7 +124,7 @@
                         class="flex justify-between text-sm uppercase tracking-wider font-bold text-[#EFE8D8]"
                     >
                         <span class="flex items-center gap-2"
-                            >Throw Away Buffet <div
+                            >Throwaway Buffet <div
                                 class="w-2 h-2 rounded-full bg-green-400 animate-pulse"
                             ></div></span
                         >

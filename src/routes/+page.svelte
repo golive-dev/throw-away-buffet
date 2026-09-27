@@ -14,11 +14,9 @@
     import SectionVersatility from "$lib/components/sections/SectionVersatility.svelte";
     import SectionRecipes from "$lib/components/sections/SectionRecipes.svelte";
     import SectionDetails from "$lib/components/sections/SectionDetails.svelte";
-    import SectionWaitlist from "$lib/components/sections/SectionWaitlist.svelte";
     import SectionSustainability from "$lib/components/sections/SectionSustainability.svelte";
     import SectionCTA from "$lib/components/sections/SectionCTA.svelte";
     import SectionSocialBuffet from "$lib/components/sections/SectionSocialBuffet.svelte";
-    import StickyCTA from "$lib/components/mobile/StickyCTA.svelte";
     import { fade, scale } from "svelte/transition";
 
     let videoModalOpen = $state(false);
@@ -51,7 +49,7 @@
                 <span
                     class="inline-block text-sm font-bold tracking-[2px] text-accent uppercase"
                 >
-                    The Ultimate Hosting Hack
+                    Finally, a Party Hack That Works
                 </span>
 
                 <h1
@@ -64,33 +62,25 @@
                 <p
                     class="text-lg md:text-xl text-muted-foreground leading-relaxed max-w-125"
                 >
-                    Meet the world's first tri-folded, biodegradable buffet
-                    station. Setup in seconds, toss without guilt. Your sink
-                    will thank you.
+                    The world's first biodegradable buffet station. Unfold it,
+                    fill it, toss it. Host like a pro without touching a single
+                    dish.
                 </p>
 
                 <div class="flex flex-wrap items-center gap-4">
-                    <Button
-                        size="lg"
-                        class="bg-primary hover:bg-[#b0220a] text-white rounded-full px-8 h-14 text-lg font-bold shadow-[0_10px_30px_-10px_rgba(0,0,0,0.2)] hover:-translate-y-0.75 hover:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out font-sans"
-                        onclick={() =>
-                            document
-                                .getElementById("waitlist")
-                                ?.scrollIntoView({ behavior: "smooth" })}
-                    >
-                        Get Early Access
-                    </Button>
-
                     <button
                         onclick={toggleVideoModal}
+                        aria-label="Watch product video"
                         class="group flex items-center gap-3 px-4 py-2 rounded-full hover:bg-black/5 transition-colors"
                     >
                         <div
                             class="w-10 h-10 rounded-full border border-gray-300 flex items-center justify-center bg-white group-hover:scale-105 transition-transform"
+                            aria-hidden="true"
                         >
                             <svg
                                 class="w-4 h-4 ml-1 fill-foreground"
                                 viewBox="0 0 24 24"
+                                aria-hidden="true"
                                 ><path d="M8 5v14l11-7z" /></svg
                             >
                         </div>
@@ -160,7 +150,7 @@
                 <div
                     class="flex items-center gap-2 font-medium text-sm text-foreground"
                 >
-                    <span class="text-xl">📦</span> Free Shipping on Bundles
+                    <span class="text-xl">🎉</span> Zero Cleanup Required
                 </div>
                 <div
                     class="hidden md:flex items-center gap-2 font-medium text-sm text-foreground"
@@ -171,44 +161,38 @@
         </div>
     </div>
 
-    <!-- Phase 3: The Narrative -->
+    <!-- Phase 3: The Narrative (Video + Hook) -->
     <SectionNarrative />
 
-    <!-- Phase 4A: Anatomy -->
-    <SectionAnatomy />
-
-    <!-- Phase 4B: How It Works -->
+    <!-- Phase 4: How It Works (Moved UP - explain product early) -->
     <SectionHowItWorks />
 
-    <!-- Phase Extra: Party ROI Calculator -->
+    <!-- Phase 5: Anatomy (Product Details) -->
+    <SectionAnatomy />
+
+    <!-- Phase 6: Party ROI Calculator (Make it personal) -->
     <SectionPartyROI />
 
-    <!-- Phase 5: Inspiration (Interactive Demo) -->
+    <!-- Phase 7: Inspiration (Interactive Demo) -->
     <SectionInspiration />
 
-    <!-- Phase 5 Ext: Versatility (Lifestyle Scenarios) -->
+    <!-- Phase 8: Versatility (Lifestyle Scenarios) -->
     <SectionVersatility />
 
-    <!-- Phase 17: The Recipes -->
+    <!-- Phase 9: Recipes -->
     <SectionRecipes />
 
-    <!-- Phase 18: The Social Buffet (Gallery) -->
-    <SectionSocialBuffet />
-
-    <!-- Phase 6: Product Details -->
+    <!-- Phase 10: Product Details/Specs -->
     <SectionDetails />
 
-    <!-- Phase 8: VIP Waitlist -->
-    <SectionWaitlist />
-
-    <!-- Phase 15: Sustainability -->
+    <!-- Phase 11: Sustainability (Build trust before the ask) -->
     <SectionSustainability />
 
-    <!-- Phase 7: Final CTA -->
-    <SectionCTA />
+    <!-- Phase 13: Social Buffet Gallery (Social proof after signup) -->
+    <SectionSocialBuffet />
 
-    <!-- Mobile Sticky CTA -->
-    <StickyCTA />
+    <!-- Phase 14: Final CTA -->
+    <SectionCTA />
 
     <!-- Video Modal -->
     {#if videoModalOpen}
@@ -216,7 +200,7 @@
             class="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
             transition:fade={{ duration: 200 }}
             onclick={toggleVideoModal}
-            onkeydown={(e) => e.key === 'Escape' && toggleVideoModal()}
+            onkeydown={(e) => e.key === "Escape" && toggleVideoModal()}
             role="dialog"
             aria-modal="true"
             tabindex="-1"

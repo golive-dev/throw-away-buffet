@@ -36,7 +36,7 @@
             <p
                 class="text-xl text-muted-foreground font-medium max-w-lg mx-auto leading-relaxed"
             >
-                Questions about your order? Want to resell Throw Away Buffet?
+                Questions about your order? Want to resell Throwaway Buffet?
                 Just saying hi? We're here.
             </p>
         </div>
@@ -80,12 +80,14 @@
                 <!-- Vibe (Dropdown) -->
                 <div class="space-y-2">
                     <label
+                        id="vibe-label"
                         class="text-lg font-bold font-heading text-foreground"
                     >
                         What's the vibe?
                     </label>
                     <Select>
                         <SelectTrigger
+                            aria-labelledby="vibe-label"
                             class="w-full border-0 border-b-2 border-gray-200 rounded-none px-0 focus:ring-0 focus:border-[var(--color-primary)] text-lg shadow-none"
                         >
                             <SelectValue placeholder="Select a topic" />
